@@ -14,8 +14,8 @@ app.io = require('socket.io')(server);
 
 app.io.on('connection', function(socket){
   console.log('a user connected');
-  var menu = require('socket/menu')(socket);
-  var games = require('socket/games')(socket);
+  var menu = require('./socket/menu')(socket);
+  var games = require('./socket/games')(socket);
 });
 
 // view engine setup

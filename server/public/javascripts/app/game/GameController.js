@@ -3,6 +3,12 @@
  */
 'use strict';
 
-ebox.controller('GameController', function() {
+ebox.controller('GameController', function($scope, SocketService) {
+    SocketService.on('up', function() {
+        console.log('up');
+    })
 
+    $scope.emit = function() {
+        SocketService.emit('up', { message: 'ELDO BYKU' } )
+    }
 });

@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
+<script>
+    var socket = io.connect('http://localhost:3000');
+    socket.on('news', function (data) {
+        console.log(data);
+        socket.emit('my other event', { my: 'data' });
+    });
+</script>
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dignissimos id perferendis quasi rem? Dicta et ex laborum, molestias mollitia non repellat sint voluptatibus. Id iure laudantium omnis placeat repudiandae?
 </body>
 </html>

@@ -6,27 +6,11 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="javascripts/app.js"></script>
+    <script src="javascripts/app.concat.js"></script>
 </head>
 <body>
-<script>
-    var socket = io.connect('http://localhost:3000');
-    socket.on('news', function (data) {
-        console.log(data);
-        socket.emit('my other event', { my: 'data' });
-    });
-</script>
-<header>
-    <div class="logo"></div>
-    <nav>
-        <ul>
-            <li>{{2+2}}</li>
-        </ul>
-    </nav>
-</header>
-    <div class="">
 
-    </div>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dignissimos id perferendis quasi rem? Dicta et ex laborum, molestias mollitia non repellat sint voluptatibus. Id iure laudantium omnis placeat repudiandae?
+    <div ui-view></div>
+
 </body>
 </html>

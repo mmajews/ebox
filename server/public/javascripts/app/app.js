@@ -1,8 +1,8 @@
 'use strict';
 
-var eBox = angular.module('ebox', ['ui.router']);
+var ebox = angular.module('ebox', ['ui.router']);
 
-eBox.config(function ($stateProvider, $urlRouterProvider) {
+ebox.config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/')
 
@@ -10,5 +10,10 @@ eBox.config(function ($stateProvider, $urlRouterProvider) {
         url: '/',
         controller: 'HomeController',
         templateUrl: 'javascripts/app/home/home.html'
-    });
+    })
+    .state('game', {
+        url: '/game',
+        controller: 'GameController',
+        templateUrl: 'javascripts/app/game/game.html'
+    })
 });

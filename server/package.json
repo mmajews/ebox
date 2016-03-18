@@ -1,26 +1,17 @@
 {
   "name": "server",
-  "version": "1.0.0",
-  "description": "ebox",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mmajews/ebox.git"
-  },
-  "keywords": [
-    "ebox"
-  ],
-  "author": "Konrad Marzec Mateusz Kmiecik Łukasz Gajewski Marcin Majewski",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mmajews/ebox/issues"
-  },
-  "homepage": "https://github.com/mmajews/ebox#readme",
   "dependencies": {
-    "express": "^4.13.4",
-    "socket.io": "^1.4.5"
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "jade": "~1.11.0",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0"
   }
 }

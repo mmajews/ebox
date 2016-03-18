@@ -6,3 +6,7 @@ gulp.task('concatJs', function () {
         .pipe(concat('app.concat.js'))
         .pipe(gulp.dest('./javascripts/'));
 });
+
+gulp.task('watchJs', function () {
+    gulp.watch('javascripts/app/**/*.js', ['concatJs']);
+});

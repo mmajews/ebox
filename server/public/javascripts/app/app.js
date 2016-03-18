@@ -1,3 +1,5 @@
 'use strict';
 
-var eBox = angular.module('ebox', []);
+var eBox = angular.module('ebox', [])
+
+

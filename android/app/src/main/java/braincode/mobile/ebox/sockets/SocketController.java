@@ -44,6 +44,6 @@ public class SocketController {
                     }
                 });
             }
-        }, 10);
+        }, 30);
     }
 }

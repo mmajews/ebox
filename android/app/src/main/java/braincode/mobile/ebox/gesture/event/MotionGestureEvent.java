@@ -23,6 +23,7 @@ public class MotionGestureEvent extends GestureEvent {
         return (new ObjectMapper()).writeValueAsString(this);
     }
 
+    @JsonIgnore
     public Movement getMovement() {
         return movement;
     }

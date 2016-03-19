@@ -5,16 +5,21 @@
 package braincode.mobile.ebox.activity;
 
 import android.app.Activity;
+import android.content.Context;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import braincode.mobile.ebox.R;
-import braincode.mobile.ebox.gesture.GestureListener;
-import braincode.mobile.ebox.sockets.SocketController;
 
 import java.net.URI;
+
+import braincode.mobile.ebox.R;
+import braincode.mobile.ebox.gesture.GestureEvent;
+import braincode.mobile.ebox.gesture.GestureListener;
+import braincode.mobile.ebox.sensor.SensorHandler;
+import braincode.mobile.ebox.sockets.SocketController;
 
 
 public class HelloActivity extends Activity {
@@ -23,6 +28,7 @@ public class HelloActivity extends Activity {
     public static DisplayMetrics metrics;
     private GestureDetector gestureDetector;
     private SocketController socketController;
+    private SensorHandler sensorHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,24 +48,52 @@ public class HelloActivity extends Activity {
         gestureDetector = new GestureDetector(this, gestureListener);
         gestureDetector.setOnDoubleTapListener(gestureListener);
 
-        Log.d("Gesture", "GestureDetector registered");
-    }
+        SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        sensorHandler = new SensorHandler(sensorManager, socketController);
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        this.gestureDetector.onTouchEvent(event);
-        return super.onTouchEvent(event);
+        Log.d("Gesture", "GestureDetector registered");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         socketController.connect();
+        sensorHandler.onResume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        sensorHandler.onPause();
         socketController.disconnect();
+    }
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+//        this.gestureDetector.onTouchEvent(event);
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                socketController.onGestureEvent(new GestureEvent() {
+                    @Override
+                    public String getName() {
+                        return "touchDown";
+                    }
+                });
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                socketController.onGestureEvent(new GestureEvent() {
+
+                    @Override
+                    public String getName() {
+                        return "touchUp";
+                    }
+                });
+                break;
+        }
+
+        return super.onTouchEvent(event);
     }
 }

@@ -1,0 +1,74 @@
+
+/*dsfkasflkajslfnalsnflnasfaflnewljf.a,nslfnwejknnjebfkjwejkfnbakbf*/
+.wrapper {
+  width: 100%;
+  /*margin: 20px auto;*/
+}
+
+/* Window */
+.window {
+  height: 95vh;
+  background: url('../background_flappy_bird.png');
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+/* Score */
+.score {
+  position: absolute;
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 250%;
+  padding-top: 20px;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 2px 2px 0 #000;
+  z-index: 4;
+}
+
+/* Bird */
+.bird {
+  height: 28px;
+  width: 40px;
+  background: url('http://s28.postimg.org/k90gybbtl/bird_Sprite.png');
+  position: absolute;
+  bottom: 50%;
+  left: 130px;
+  z-index: 3;
+  animation: birdFlap 0.2s steps(3, end) infinite alternate;
+  transition: transform 0.3s;
+}
+
+@keyframes birdFlap {
+  0% {background-position: 0 84px;}
+  100% {background-position: 0 0;}
+}
+
+/* Pipes */
+.pipe {
+  width: 60px;
+  height: 100%;
+  position: absolute;
+  right: -60px;
+  z-index: 2;
+}
+
+.pipe.hidden {
+  display: none;
+}
+
+.pipe .topHalf {
+  background: url('http://s21.postimg.org/kyr2rnpzr/pipe.png') bottom;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.pipe .bottomHalf {
+  background: url('http://s21.postimg.org/kyr2rnpzr/pipe.png') top;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

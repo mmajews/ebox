@@ -9,13 +9,19 @@ ebox.controller('GameController', function($scope, SocketService) {
         console.log('up');
     });
 
-    SocketService.on('onSingleTapConfirmed', function() {
-        console.log('onSingleTapConfirmed');
+    SocketService.on('onSingleTapConfirmed', function(data) {
+        console.log(data);
+    });
+
+    SocketService.on('onScroll', function(data) {
+        console.log(data);
+    });
+
+    SocketService.on('onDoubleTap', function(data) {
+        console.log(data);
     });
 
     $scope.emitStub = function() {
-        SocketService.emit('event', { message: 'ELDO BYKU' }, function(response) {
-            console.log(response + 'response')
-        });
+        SocketService.emit('padEvent', { movement: 'onSingleTapConfirmed' });
     }
 });

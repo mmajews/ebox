@@ -12,6 +12,7 @@
     "express": "~4.13.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
+    "gulp-less": "^3.0.5",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "qrcode": "^0.4.2",

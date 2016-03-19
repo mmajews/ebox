@@ -4,10 +4,13 @@
 var io = require('./../utils/io').io();
 
 var games = function (socket, gameClient) {
+    console.log("costam");
     socket.on('padEvent', function (controllerData) {
-        console.log('games/up');
-        io.sockets.connected[gameClient.id].emit(controllerData.movement, controllerData);
-        console.log('oddalem');
+        console.log("pad event: " + controllerData);
+        try {
+            controllerData = JSON.parse(controllerData);
+        } catch(err) {}
+        io.sockets.connected[gameClient.id].emit(controllerData.name, controllerData);
     });
 };
 

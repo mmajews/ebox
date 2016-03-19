@@ -9,12 +9,12 @@ ebox.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state('home', {
             url: '/',
             templateUrl: 'javascripts/app/home/home.html',
-            controller: function ($rootScope, SocketService, $window) {
+            controller: function ($rootScope, $scope, SocketService, $window) {
                 $rootScope.hideCursor = false;
 
-                SocketService.on('onScroll', function (data) {
+                var listener = $rootScope.$on('onScroll', function (ev,data) {
                     var offset = $('#cursor').offset();
-                    var newOffset = {top: offset.top - data.distanceX*2, left: offset.left-data.distanceY*2}
+                    var newOffset = {top: offset.top - data.distanceY*2*$window.innerHeight, left: offset.left-data.distanceX*2*$window.innerWidth}
                     if(newOffset.top < 0){
                         newOffset.top = 0;
                     }
@@ -30,6 +30,10 @@ ebox.config(function ($stateProvider, $urlRouterProvider) {
                     }
 
                     $('#cursor').offset(newOffset);
+                });
+
+                $scope.$on("$destroy", function () {
+                    listener();
                 });
 
             }
@@ -54,7 +58,10 @@ ebox.config(function ($stateProvider, $urlRouterProvider) {
 
 ebox.run(function ($document, $rootScope, $state, SocketService) {
 
-    SocketService.noop();
+    SocketService.on('onScroll', function (data) {
+        $rootScope.$emit('onScroll', data);
+    });
+
     setTimeout(function () {
         $('.overlay').fadeOut();
     }, 1000);
@@ -68,3 +75,6 @@ ebox.run(function ($document, $rootScope, $state, SocketService) {
         $state.go(state);
     };
 });
+
+
+

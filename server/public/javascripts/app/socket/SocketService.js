@@ -9,7 +9,6 @@ ebox.factory('SocketService', function($rootScope) {
     return {
         on: function(eventName, callback) {
             socket.on(eventName, function () {
-                console.log('powrót');
                 var args = arguments;
                 $rootScope.$apply(function () {
                     callback.apply(socket, args);
@@ -18,7 +17,6 @@ ebox.factory('SocketService', function($rootScope) {
         },
 
         emit: function(eventName, data) {
-            console.log(data);
             socket.emit(eventName, data);
         },
 

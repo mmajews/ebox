@@ -9,7 +9,7 @@ ebox.factory('SocketService', function($rootScope) {
     return {
         on: function(eventName, callback) {
             socket.on(eventName, function () {
-                console.log('powrót')
+                console.log('powrót');
                 var args = arguments;
                 $rootScope.$apply(function () {
                     callback.apply(socket, args);
@@ -18,15 +18,8 @@ ebox.factory('SocketService', function($rootScope) {
         },
 
         emit: function(eventName, data, callback) {
-            socket.emit(eventName, data, function () {
-                console.log('dupa');
-                var args = arguments;
-                $rootScope.$apply(function () {
-                    if (callback) {
-                        callback.apply(socket, args);
-                    }
-                });
-            })
+            console.log('emit');
+            socket.emit(eventName, data);
         }
     }
 });

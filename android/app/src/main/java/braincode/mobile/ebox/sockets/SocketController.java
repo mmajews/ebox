@@ -6,7 +6,7 @@ import io.socket.client.Socket;
 import java.net.URI;
 import java.util.List;
 
-class SocketController {
+public class SocketController {
     private Socket socket;
 
     public SocketController(URI uri) {

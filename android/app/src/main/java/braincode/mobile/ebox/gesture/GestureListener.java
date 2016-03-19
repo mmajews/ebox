@@ -3,6 +3,10 @@ package braincode.mobile.ebox.gesture;
 import android.util.Log;
 import android.view.MotionEvent;
 import braincode.mobile.ebox.sockets.Movement;
+import braincode.mobile.ebox.sockets.SocketController;
+
+import java.net.URI;
+import java.util.ArrayList;
 
 import static android.view.GestureDetector.OnDoubleTapListener;
 import static android.view.GestureDetector.OnGestureListener;
@@ -10,10 +14,17 @@ import static android.view.GestureDetector.OnGestureListener;
 public class GestureListener implements OnGestureListener, OnDoubleTapListener {
 
     private static final String TAG = "GestureListener";
+    private SocketController socketController;
+
+    public GestureListener(String httpServer) {
+        socketController = new SocketController(URI.create(httpServer));
+    }
+
 
     @Override
     public boolean onSingleTapConfirmed(MotionEvent e) {
         Log.d(TAG, Movement.OnSingleTapConfirmed.getEventText());
+        socketController.performMovement(Movement.OnSingleTapConfirmed, new ArrayList<String>());
         return false;
     }
 

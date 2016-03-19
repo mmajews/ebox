@@ -6,18 +6,16 @@ package braincode.mobile.ebox.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.VelocityTrackerCompat;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
-import android.view.View;
+
+import java.net.URI;
 
 import braincode.mobile.ebox.R;
 import braincode.mobile.ebox.gesture.GestureListener;
-
-import java.net.URI;
 
 
 public class HelloActivity extends Activity {

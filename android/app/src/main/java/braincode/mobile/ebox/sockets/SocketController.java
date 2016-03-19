@@ -1,16 +1,16 @@
 package braincode.mobile.ebox.sockets;
 
+import braincode.mobile.ebox.gesture.GestureEvent;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 
 import java.net.URI;
-import java.util.List;
 
 public class SocketController {
     private Socket socket;
 
     public SocketController(URI uri) {
-        socket = IO.socket(uri, createIOOptions());
+        socket = IO.socket(uri);
     }
 
     public void connect() {
@@ -21,15 +21,7 @@ public class SocketController {
         socket.disconnect();
     }
 
-    private IO.Options createIOOptions() {
-        IO.Options opts = new IO.Options();
-        opts.forceNew = true;
-        opts.reconnection = false;
-
-        return opts;
-    }
-
-    public void onGestureEvent(String event, List<String> arguments) {
-        socket.emit(event, arguments.toArray());
+    public void onGestureEvent(GestureEvent gestureEvent) {
+        socket.emit(gestureEvent.getName(), gestureEvent.getData());
     }
 }

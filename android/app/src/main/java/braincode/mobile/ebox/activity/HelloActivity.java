@@ -21,28 +21,26 @@ import java.net.URI;
 
 public class HelloActivity extends Activity {
 
-    public static final String HTTP_SERVER = "http://10.22.104.69:3000";
+    public static final String HTTP_SERVER = "http://10.22.102.197:3000";
 
     private GestureDetector gestureDetector;
-    private GestureListener gestureListener;
 
-    private VelocityTracker mVelocityTracker;
     private SocketController socketController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello);
+
         // socket.io
         URI uri = URI.create(HTTP_SERVER);
         socketController = new SocketController(uri);
 
-        gestureListener = new GestureListener(socketController);
-
+        GestureListener gestureListener = new GestureListener(socketController);
         gestureDetector = new GestureDetector(this, gestureListener);
         gestureDetector.setOnDoubleTapListener(gestureListener);
 
-        Log.d("Gesture", "GestureDetecter registered");
+        Log.d("Gesture", "GestureDetector registered");
     }
 
     @Override

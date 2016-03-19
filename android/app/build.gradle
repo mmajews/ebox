@@ -27,6 +27,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'org.mockito:mockito-all:1.8.4'
     //noinspection GradleDependency
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'io.socket:socket.io-client:0.7.0'

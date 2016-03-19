@@ -1,7 +1,7 @@
 /**
  * Created by konradmarzec on 19.03.2016.
  */
-ebox.directive('flappyBird', function() {
+ebox.directive('flappyBird', function(SocketService) {
     return {
         restrict: 'E',
         templateUrl: 'javascripts/app/flappy_bird/flappy_bird.html',
@@ -10,7 +10,7 @@ ebox.directive('flappyBird', function() {
                 var window = $('.window'),
                 bird = $('#bird'),
                 fallTime = 1000,
-                gapHeight = 120,
+                gapHeight = 170,
                 gameState = 2,
                 pipeId = 0;
 
@@ -35,6 +35,14 @@ ebox.directive('flappyBird', function() {
                     }
                 });
 
+                SocketService.on('onSingleTapConfirmed', function(data) {
+                    birdFlap();
+                    if(gameState === 2){
+                        gameState = 1;
+                        deleteInterval();
+                    }
+                });
+
                 $(window).keydown(function(e){
                     if(e.keyCode === 32){
                         birdFlap();
@@ -52,13 +60,13 @@ ebox.directive('flappyBird', function() {
                             if(gameState === 1){
                                 deletePipe();
                             }
-                        }, 1300);
+                        }, 5000);
                     }, 2050);
                 }
 
                 function birdFlap(){
                     if(gameState === 1 || gameState === 2){
-                        bird.css('transform', 'rotate(-20deg)');
+                        bird.css('transform', 'rotate(-10deg)');
                         bird.stop().animate({
                             bottom: '+=60px'
                         }, 200, function(){
@@ -86,7 +94,7 @@ ebox.directive('flappyBird', function() {
 
                 function spawnPipe(){
                     pipeId++;
-                    var pipeTopHeight = Math.floor(Math.random() * (window.height() - 250)) + 50;
+                    var pipeTopHeight = Math.floor(Math.random() * (window.height() - 300)) + 50;
                     var pipeBottomHeight = window.height() - (pipeTopHeight + gapHeight);
                     var pipe = '<div class="pipe" pipe-id="' + pipeId + '"><div style="height: ' + pipeTopHeight + 'px" class="topHalf"></div><div style="height:' + pipeBottomHeight + 'px" class="bottomHalf"></div></div>';
                     window.append(pipe);
@@ -99,7 +107,7 @@ ebox.directive('flappyBird', function() {
                 function movePipes(){
                     $('.pipe').each(function(){
                         $(this).animate({
-                            right: '+=160px'
+                            right: '+=240px'
                         }, 1300, 'linear');
                     });
                 }
@@ -128,8 +136,9 @@ ebox.directive('flappyBird', function() {
                     $('.pipe').stop();
                     gravity();
                     gameState = 0;
+                    setTimeout(function () { location.reload() }, 2000);
                 }
             })
         }
     }
-})
+});

@@ -82,14 +82,14 @@ body {
 }
 /*dsfkasflkajslfnalsnflnasfaflnewljf.a,nslfnwejknnjebfkjwejkfnbakbf*/
 .wrapper {
-  width: 350px;
-  margin: 20px auto;
+  width: 100%;
+  /*margin: 20px auto;*/
 }
 
 /* Window */
 .window {
-  height: 500px;
-  background: url('http://s30.postimg.org/tycvlfagh/background.png');
+  height: 95vh;
+  background: url('../background_flappy_bird.png');
   position: relative;
   overflow: hidden;
   margin-bottom: 10px;

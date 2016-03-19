@@ -17,3 +17,9 @@ ebox.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'javascripts/app/game/game.html'
     })
 });
+
+ebox.run(function () {
+    setTimeout(function () {
+        $('.overlay').fadeOut();
+    }, 1000);
+});

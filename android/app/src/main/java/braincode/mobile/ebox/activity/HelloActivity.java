@@ -27,7 +27,7 @@ public class HelloActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HTTP_SERVER = getIntent().getExtras().getString("IP");
+        HTTP_SERVER = (String) getIntent().getExtras().get("IP");
         Log.d("ebox", "will connect to: " + HTTP_SERVER);
         setContentView(R.layout.activity_hello);
 

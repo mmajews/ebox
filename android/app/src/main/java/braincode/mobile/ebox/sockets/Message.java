@@ -5,20 +5,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Date;
 
-class Message {
+public class Message {
     private Movement movement;
     private double x;
     private double y;
     private Date timeStamp;
 
-    Message(Movement movement, double x, double y, Date timeStamp) {
+    public Message(Movement movement, double x, double y, Date timeStamp) {
         this.movement = movement;
         this.x = x;
         this.y = y;
         this.timeStamp = timeStamp;
     }
 
-    String toJson() throws JsonProcessingException {
+    public String toJson() throws JsonProcessingException {
         return (new ObjectMapper()).writeValueAsString(this);
     }
 

@@ -17,7 +17,11 @@ public class SocketController {
         socket.connect();
     }
 
-    public void performMovement(Movement movement, List<String> arguments) {
-        socket.emit(movement.toString(), arguments.toArray());
+    public void performMovement(String event, List<String> arguments) {
+        socket.emit(event, arguments.toArray());
+    }
+
+    public void disconnect() {
+        socket.disconnect();
     }
 }

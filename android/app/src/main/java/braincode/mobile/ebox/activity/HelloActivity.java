@@ -42,7 +42,7 @@ public class HelloActivity extends Activity {
 
         // socket.io
         URI uri = URI.create(HTTP_SERVER);
-        socketController = new SocketController(this, uri);
+        socketController = new SocketController(uri);
 
         GestureListener gestureListener = new GestureListener(socketController);
         gestureDetector = new GestureDetector(this, gestureListener);
@@ -71,7 +71,7 @@ public class HelloActivity extends Activity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-//        this.gestureDetector.onTouchEvent(event);
+        this.gestureDetector.onTouchEvent(event);
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:

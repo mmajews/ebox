@@ -1,7 +1,5 @@
 package braincode.mobile.ebox.sockets;
 
-import android.app.Activity;
-import android.os.Handler;
 import android.util.Log;
 
 import java.net.URI;
@@ -13,13 +11,13 @@ import io.socket.client.Socket;
 
 public class SocketController {
 
-    private final Activity activity;
+    private static final int EVENT_GAP = 20;
 
     private Socket socket;
-    private Handler handler = new Handler();
 
-    public SocketController(Activity activity, URI uri) {
-        this.activity = activity;
+    private long previous;
+
+    public SocketController(URI uri) {
         this.socket = IO.socket(uri);
     }
 
@@ -32,18 +30,12 @@ public class SocketController {
     }
 
     public void onGestureEvent(final GestureEvent gestureEvent) {
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Object data = gestureEvent.getData();
-                        Log.d("padEvent", "TIMESTAMP:" + new Date().getTime() + ", data: " + data);
-                        socket.emit("padEvent", data);
-                    }
-                });
-            }
-        }, 30);
+        long timestamp = new Date().getTime();
+        if (timestamp - previous > EVENT_GAP) {
+            Object data = gestureEvent.getData();
+            Log.d("padEvent", "TIMESTAMP:" + new Date().getTime() + ", data: " + data);
+            socket.emit("padEvent", data);
+            previous = timestamp;
+        }
     }
 }

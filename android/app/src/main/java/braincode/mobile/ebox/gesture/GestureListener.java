@@ -4,7 +4,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import braincode.mobile.ebox.sockets.Message;
 import braincode.mobile.ebox.sockets.Movement;
-import braincode.mobile.ebox.sockets.ScrollMessage;
 import braincode.mobile.ebox.sockets.SocketController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -61,7 +60,6 @@ public class GestureListener implements OnGestureListener, OnDoubleTapListener {
     @Override
     public boolean onDoubleTap(MotionEvent e) {
         Log.d(TAG, Movement.OnDoubleTap.getEventText());
-        sendEvent(createMessage(Movement.OnDoubleTap, e));
         return false;
     }
 
@@ -109,8 +107,7 @@ public class GestureListener implements OnGestureListener, OnDoubleTapListener {
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-//        Log.d(TAG, Movement.OnFling.getEventText());
-//        return false;
+        Log.d(TAG, Movement.OnFling.getEventText());
         return false;
     }
 }

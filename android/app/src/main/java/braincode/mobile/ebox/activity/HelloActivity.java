@@ -10,27 +10,24 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-
-import java.net.URI;
-
 import braincode.mobile.ebox.R;
 import braincode.mobile.ebox.gesture.GestureListener;
 import braincode.mobile.ebox.sockets.SocketController;
+
+import java.net.URI;
 
 
 public class HelloActivity extends Activity {
 
     public static String HTTP_SERVER = "http://10.22.102.197:3000";
-
+    public static DisplayMetrics metrics;
     private GestureDetector gestureDetector;
     private SocketController socketController;
-
-    public static DisplayMetrics metrics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HTTP_SERVER = (String) getIntent().getExtras().get("IP");
+        HTTP_SERVER = "http://" + getIntent().getExtras().get("IP").toString();
         Log.d("ebox", "will connect to: " + HTTP_SERVER);
         setContentView(R.layout.activity_hello);
 
@@ -39,7 +36,7 @@ public class HelloActivity extends Activity {
 
         // socket.io
         URI uri = URI.create(HTTP_SERVER);
-        socketController = new SocketController(uri);
+        socketController = new SocketController(this, uri);
 
         GestureListener gestureListener = new GestureListener(socketController);
         gestureDetector = new GestureDetector(this, gestureListener);

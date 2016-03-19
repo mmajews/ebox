@@ -3,15 +3,15 @@
 </div>
 <div class="home">
 
-    <div hoverable class="card gta">
+    <div hoverable class="card gta" id="gtacard" data-destination="gta"  ng-click="goTo('gta')">
         <h2>GTA</h2>
     </div>
 
-    <div hoverable class="card flappy" ng-click="goTo('flappyBird')">
+    <div hoverable class="card flappy" id="flappycard" data-destination="flappyBird"  ng-click="goTo('flappyBird')">
         <h2>Flappy Bird</h2>
     </div>
 
-    <div hoverable class="card pong" ng-click="goTo('pong')">
+    <div hoverable class="card pong" id="pongcard" data-destination="pong" ng-click="goTo('pong')">
         <h2>Pong</h2>
     </div>
 

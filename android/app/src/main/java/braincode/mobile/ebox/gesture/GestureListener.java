@@ -24,41 +24,41 @@ public class GestureListener implements OnGestureListener, OnDoubleTapListener {
     @Override
     public boolean onSingleTapConfirmed(MotionEvent e) {
         //Log.d(TAG, Movement.OnSingleTapConfirmed.getEventText());
-        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnSingleTapConfirmed, e));
+//        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnSingleTapConfirmed, e));
         return false;
     }
 
     @Override
     public boolean onDoubleTap(MotionEvent e) {
         //Log.d(TAG, Movement.OnDoubleTap.getEventText());
-        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnDoubleTap, e));
+//        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnDoubleTap, e));
         return false;
     }
 
     @Override
     public boolean onDoubleTapEvent(MotionEvent e) {
         //Log.d(TAG, Movement.OnDoubleTapEvent.getEventText());
-        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnDoubleTapEvent, e));
+//        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnDoubleTapEvent, e));
         return false;
     }
 
     @Override
     public boolean onDown(MotionEvent e) {
         //Log.d(TAG, Movement.OnDown.getEventText());
-        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnDown, e));
+//        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnDown, e));
         return false;
     }
 
     @Override
     public void onShowPress(MotionEvent e) {
         //Log.d(TAG, Movement.OnShowPress.getEventText());
-        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnShowPress, e));
+//        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnShowPress, e));
     }
 
     @Override
     public boolean onSingleTapUp(MotionEvent e) {
         //Log.d(TAG, Movement.OnSingleTapUp.getEventText());
-        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnSingleTapUp, e));
+//        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnSingleTapUp, e));
         return false;
     }
 
@@ -72,13 +72,13 @@ public class GestureListener implements OnGestureListener, OnDoubleTapListener {
     @Override
     public void onLongPress(MotionEvent e) {
         //Log.d(TAG, Movement.OnLongPress.getEventText());
-        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnSingleTapConfirmed, e));
+//        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnSingleTapConfirmed, e));
     }
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
         //Log.d(TAG, Movement.OnFling.getEventText());
-        socketController.onGestureEvent(new FlingGestureEvent(e1, e2, velocityX, velocityY));
+//        socketController.onGestureEvent(new FlingGestureEvent(e1, e2, velocityX, velocityY));
         return false;
     }
 }

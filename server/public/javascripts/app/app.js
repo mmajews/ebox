@@ -9,7 +9,7 @@ ebox.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state('home', {
             url: '/',
             templateUrl: 'javascripts/app/home/home.html',
-            controller: function ($rootScope, $scope, SocketService, $window) {
+            controller: function ($rootScope, $scope, SocketService, $window, $state) {
                 $rootScope.hideCursor = false;
 
                 var listener = $rootScope.$on('onScroll', function (ev,data) {
@@ -32,10 +32,24 @@ ebox.config(function ($stateProvider, $urlRouterProvider) {
                     $('#cursor').offset(newOffset);
                 });
 
-                $scope.$on("$destroy", function () {
-                    listener();
+                var toucher = $rootScope.$on('onSingleTapConfirmed', function (ev, data) {
+                    if($('.card.hovered')){
+                        $state.go($('.card.hovered').data('destination'));
+                    }
                 });
 
+                $scope.$on("$destroy", function () {
+                    listener();
+                    toucher();
+                });
+
+            }
+        })
+        .state('gta', {
+            url: '/gta',
+            templateUrl: 'javascripts/app/gta/game.html',
+            controller: function ($rootScope) {
+                $rootScope.hideCursor = true;
             }
         })
         .state('game', {
@@ -52,7 +66,10 @@ ebox.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('flappyBird', {
             url: '/flappy_bird',
-            templateUrl: 'javascripts/app/flappy_bird/game.html'
+            templateUrl: 'javascripts/app/flappy_bird/game.html',
+            controller: function ($rootScope) {
+                $rootScope.hideCursor = true;
+            }
         })
 });
 
@@ -60,6 +77,14 @@ ebox.run(function ($document, $rootScope, $state, SocketService) {
 
     SocketService.on('onScroll', function (data) {
         $rootScope.$emit('onScroll', data);
+    });
+
+    SocketService.on('onSingleTapConfirmed', function (data) {
+        $rootScope.$emit('onSingleTapConfirmed', data);
+    });
+
+    SocketService.on('back', function (data) {
+        $rootScope.$emit('back', data);
     });
 
     setTimeout(function () {

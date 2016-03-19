@@ -20,6 +20,10 @@ ebox.factory('SocketService', function($rootScope) {
             socket.emit(eventName, data);
         },
 
-        noop: angular.noop
+        noop: angular.noop,
+
+        socket: function() {
+            return socket;
+        }
     }
 });

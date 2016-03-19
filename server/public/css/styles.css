@@ -19,6 +19,9 @@ body {
 .container {
   padding: 20px;
 }
+#GTADebugPositionData {
+  display: none;
+}
 .overlay {
   position: absolute;
   top: 0;

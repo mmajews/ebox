@@ -1,11 +1,11 @@
 /**
  * Created by konradmarzec on 19.03.2016.
  */
-ebox.directive('flappyBird', function(SocketService) {
+ebox.directive('flappyBird', function(SocketService, $state, $rootScope) {
     return {
         restrict: 'E',
         templateUrl: 'javascripts/app/flappy_bird/flappy_bird.html',
-        controller: function() {
+        controller: function($scope) {
             $(function(){
                 var window = $('.window'),
                 bird = $('#bird'),
@@ -13,6 +13,14 @@ ebox.directive('flappyBird', function(SocketService) {
                 gapHeight = 170,
                 gameState = 2,
                 pipeId = 0;
+
+                var listener = $rootScope.$on('back', function () {
+                    $state.go('home');
+                });
+
+                $scope.$on('$destroy', function () {
+                    listener();
+                });
 
                 var int = setInterval(function(){
                     if(gameState === 1){
@@ -56,7 +64,7 @@ ebox.directive('flappyBird', function(SocketService) {
 
                 function deleteInterval(){
                     setTimeout(function(){
-                        var int= setInterval(function(){
+                        var int = setInterval(function(){
                             if(gameState === 1){
                                 deletePipe();
                             }
@@ -136,7 +144,6 @@ ebox.directive('flappyBird', function(SocketService) {
                     $('.pipe').stop();
                     gravity();
                     gameState = 0;
-                    setTimeout(function () { location.reload() }, 2000);
                 }
             })
         }

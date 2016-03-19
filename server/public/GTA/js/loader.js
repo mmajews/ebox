@@ -37,8 +37,7 @@ GTA.NavigationalData.prototype.loadData = function ( x, y, w, h, sam, name ) {
 };
 
 
-GTA.loader = function (file, socket) {
-
+GTA.loader = function (file) {
     /*
     GTA.ajaxLoader.call(this, file, function(data) {
         GTA.parseCMP.call( this, new DataViewReader( data, true ) );
@@ -62,7 +61,7 @@ GTA.loader = function (file, socket) {
         this.mission = this.missions[ 1 ];
         
         GTA.ajaxLoader.call(this, "GTA/data/" + this.mission.cmp, function(data) {
-            GTA.parseCMP.call( this, new DataViewReader( data, true ), socket );
+            GTA.parseCMP.call( this, new DataViewReader( data, true ) );
         });
         
         
@@ -405,7 +404,7 @@ GTA.parseSDT = function ( data, number ) {
     
 };
 
-GTA.parseCMP = function ( data, socket ) {
+GTA.parseCMP = function ( data ) {
     
     var fileInfo = {
         versionCode: data.getUint32(),
@@ -537,11 +536,11 @@ GTA.parseCMP = function ( data, socket ) {
                     
                             
                     if (GTA.Debug.startPosition !== undefined && GTA.Debug.enabled) {
-                        game.player = new GTA.Player( game, socket, 64 * GTA.Debug.startPosition[ 0 ], -64 * GTA.Debug.startPosition[ 1 ], 64 * GTA.Debug.startPosition[ 2 ]  );
+                        game.player = new GTA.Player( game, 64 * GTA.Debug.startPosition[ 0 ], -64 * GTA.Debug.startPosition[ 1 ], 64 * GTA.Debug.startPosition[ 2 ]  );
         
                     } else {
             
-                        game.player = new GTA.Player( game, socket,
+                        game.player = new GTA.Player( game,
                             64 * 105, 
                             -64 * 119, 
                             2 * 64  

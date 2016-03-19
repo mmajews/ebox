@@ -6,8 +6,9 @@
 
 
 
-GTA.Player = function ( game, socket, x, y, z ) {
+GTA.Player = function ( game, x, y, z ) {
 
+    var self = this;
     
     this.position.x = x;
     this.position.y = y;
@@ -45,12 +46,39 @@ GTA.Player = function ( game, socket, x, y, z ) {
     this.spriteframe = 0;
     
    
-    
-    
-    
+
     
     this.domElement = document;
-    console.log(socket);
+
+    window.mySocket.on('left', function () {
+        console.log('left web')
+        self.turnRight = false;
+        self.turnLeft = true;
+    });
+
+    window.mySocket.on('right', function () {
+        console.log('right web')
+
+        self.turnLeft = false;
+        self.turnRight = true;
+    });
+
+    window.mySocket.on('touchDown', function () {
+        console.log('down web')
+
+        self.moveForward = true;
+    });
+
+    window.mySocket.on('touchUp', function () {
+        console.log('up web')
+        self.moveForward = false;
+    });
+
+    window.mySocket.on('stop', function () {
+        console.log('up web')
+        self.turnLeft = false;
+        self.turnRight = false;
+    });
     
     this.onKeyDown = function ( event ) {
         switch( event.keyCode ) {

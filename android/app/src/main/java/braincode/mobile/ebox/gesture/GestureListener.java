@@ -55,7 +55,6 @@ public class GestureListener implements OnGestureListener, OnDoubleTapListener {
     @Override
     public void onLongPress(MotionEvent e) {
         Log.d(TAG, "onLongPress");
-
     }
 
     @Override

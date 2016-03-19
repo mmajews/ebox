@@ -36,14 +36,21 @@ public class HelloActivity extends Activity {
 
         gestureListener = new GestureListener();
 
-        gestureDetector = new GestureDetector(getApplicationContext(), gestureListener);
+        gestureDetector = new GestureDetector(this, gestureListener);
         gestureDetector.setOnDoubleTapListener(gestureListener);
+
+        Log.d("Gesture", "GestureDetecter registered");
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.gestureDetector.onTouchEvent(event);
 
+        handleVelocity(event);
+        return super.onTouchEvent(event);
+    }
+
+    private void handleVelocity(MotionEvent event) {
         int index = event.getActionIndex();
         int action = event.getActionMasked();
         int pointerId = event.getPointerId(index);
@@ -51,10 +58,10 @@ public class HelloActivity extends Activity {
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 if (mVelocityTracker == null) {
-                    // Retrieve a new VelocityTracker object to watch the velocity of a motion.
+                    // Retrieve a new VelocityTracker object to watch the handleVelocity of a motion.
                     mVelocityTracker = VelocityTracker.obtain();
                 } else {
-                    // Reset the velocity tracker back to its initial state.
+                    // Reset the handleVelocity tracker back to its initial state.
                     mVelocityTracker.clear();
                 }
                 // Add a user's movement to the tracker.
@@ -62,11 +69,11 @@ public class HelloActivity extends Activity {
                 break;
             case MotionEvent.ACTION_MOVE:
                 mVelocityTracker.addMovement(event);
-                // When you want to determine the velocity, call
+                // When you want to determine the handleVelocity, call
                 // computeCurrentVelocity(). Then call getXVelocity()
-                // and getYVelocity() to retrieve the velocity for each pointer ID.
+                // and getYVelocity() to retrieve the handleVelocity for each pointer ID.
                 mVelocityTracker.computeCurrentVelocity(1000);
-                // Log velocity of pixels per second
+                // Log handleVelocity of pixels per second
                 // Best practice to use VelocityTrackerCompat where possible.
                 Log.d("Hello", "X velocity: " +
                         VelocityTrackerCompat.getXVelocity(mVelocityTracker, pointerId));
@@ -79,7 +86,6 @@ public class HelloActivity extends Activity {
                 mVelocityTracker.recycle();
                 break;
         }
-        return super.onTouchEvent(event);
     }
 
 }

@@ -11,38 +11,42 @@ public class FlingGestureEvent extends GestureEvent {
     private MotionEvent motionEvent1;
     private MotionEvent motionEvent2;
 
-    private double velocityX;
-    private double velocityY;
+    private float velocityX;
+    private float velocityY;
 
-    public FlingGestureEvent(MotionEvent motionEvent1, MotionEvent motionEvent2, double velocityX, double velocityY) {
+    public FlingGestureEvent(MotionEvent motionEvent1, MotionEvent motionEvent2, float velocityX, float velocityY) {
         this.motionEvent1 = motionEvent1;
         this.motionEvent2 = motionEvent2;
         this.velocityY = velocityY;
         this.velocityX = velocityX;
     }
 
-    public double getX1() {
+    public float getX1() {
         return motionEvent1.getX();
     }
 
-    public double getY1() {
+    public float getY1() {
         return motionEvent1.getY();
     }
 
-    public double getX2() {
+    public float getX2() {
         return motionEvent2.getX();
     }
 
-    public double getY2() {
+    public float getY2() {
         return motionEvent2.getY();
     }
 
-    public double getVelocityX() {
+    public float getVelocityX() {
         return velocityX;
     }
 
-    public double getVelocityY() {
+    public float getVelocityY() {
         return velocityY;
+    }
+
+    public long getTimestamp() {
+        return motionEvent1.getEventTime();
     }
 
     @Override

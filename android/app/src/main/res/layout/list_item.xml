@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright © 2016 and Confidential to Pegasystems Inc. All rights reserved.
   -->
 
@@ -12,10 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/message" android:layout_margin="8dp" android:textColor="#000"/>
+        android:id="@+id/message"
+        android:layout_margin="8dp"
+        android:textColor="#000" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
+        android:background="@android:color/darker_gray" />
 </LinearLayout>

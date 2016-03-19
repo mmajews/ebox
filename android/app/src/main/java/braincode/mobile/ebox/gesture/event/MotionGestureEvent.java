@@ -26,16 +26,16 @@ public class MotionGestureEvent extends GestureEvent {
         return movement;
     }
 
-    public double getX() {
+    public float getX() {
         return motionEvent.getX();
     }
 
-    public double getY() {
+    public float getY() {
         return motionEvent.getY();
     }
 
-    public String getTimestamp() {
-        return String.valueOf(motionEvent.getEventTime());
+    public long getTimestamp() {
+        return motionEvent.getEventTime();
     }
 
     @JsonIgnore

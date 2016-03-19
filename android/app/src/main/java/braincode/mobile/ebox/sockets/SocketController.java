@@ -1,10 +1,10 @@
 package braincode.mobile.ebox.sockets;
 
+import java.net.URI;
+
 import braincode.mobile.ebox.gesture.GestureEvent;
 import io.socket.client.IO;
 import io.socket.client.Socket;
-
-import java.net.URI;
 
 public class SocketController {
     private Socket socket;

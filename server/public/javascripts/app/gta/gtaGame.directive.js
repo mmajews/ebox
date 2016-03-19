@@ -3,17 +3,12 @@
  */
 'use strict';
 
-ebox.directive('gtaGame', function () {
+ebox.directive('gtaGame', function (SocketService) {
     return {
         restrict: 'E',
         templateUrl: 'javascripts/app/gta/gta.html',
-        controller: function($scope) {
-           //$scope.start = function start(){
-            console.log('test');
-
-
-                var game = new GTA.Game();
-            //}
+        link: function($scope, element) {
+            var game = new GTA.Game(element, SocketService.socket());
         }
     }
 });

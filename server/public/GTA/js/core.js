@@ -52,7 +52,7 @@ window.URL = window.webkitURL;
 window.BlobBuilder = window.WebKitBlobBuilder || window.MozBlobBuilder;
 window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
 
-GTA.Game = function ( ) {
+GTA.Game = function (element, socket) {
     
     document.addEventListener( 'mousemove', onDocumentMouseMove, false );
     this.scene = new THREE.Scene();
@@ -69,7 +69,7 @@ GTA.Game = function ( ) {
         this.filesystem = new GTA.FileSystem( this );
     } else {
         this.filesystem = null;
-        GTA.loader.call( this );
+        GTA.loader.call(this, socket);
     }
     
    
@@ -165,7 +165,7 @@ GTA.Game = function ( ) {
     this.renderer.sortObjects = false;
         
     console.log(this);
-    window.document.body.appendChild( this.renderer.domElement );
+    element.append( this.renderer.domElement );
     
  //   window.document.body.appendChild(  GTA.Debug.createPhysicsDebug.call ( this ) );
     

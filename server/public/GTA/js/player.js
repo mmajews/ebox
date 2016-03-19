@@ -6,7 +6,7 @@
 
 
 
-GTA.Player = function ( game, x, y, z ) {
+GTA.Player = function ( game, socket, x, y, z ) {
 
     
     this.position.x = x;
@@ -50,7 +50,7 @@ GTA.Player = function ( game, x, y, z ) {
     
     
     this.domElement = document;
-    
+    console.log(socket);
     
     this.onKeyDown = function ( event ) {
         switch( event.keyCode ) {

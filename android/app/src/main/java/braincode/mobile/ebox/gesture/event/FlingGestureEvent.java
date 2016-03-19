@@ -2,6 +2,7 @@ package braincode.mobile.ebox.gesture.event;
 
 import android.view.MotionEvent;
 
+import braincode.mobile.ebox.activity.HelloActivity;
 import braincode.mobile.ebox.gesture.GestureEvent;
 import braincode.mobile.ebox.sockets.Movement;
 
@@ -22,27 +23,27 @@ public class FlingGestureEvent extends GestureEvent {
     }
 
     public float getX1() {
-        return motionEvent1.getX();
+        return motionEvent1.getX() / HelloActivity.metrics.widthPixels;
     }
 
     public float getY1() {
-        return motionEvent1.getY();
+        return motionEvent1.getY() / HelloActivity.metrics.heightPixels;
     }
 
     public float getX2() {
-        return motionEvent2.getX();
+        return motionEvent2.getX() / HelloActivity.metrics.widthPixels;
     }
 
     public float getY2() {
-        return motionEvent2.getY();
+        return motionEvent2.getY() / HelloActivity.metrics.heightPixels;
     }
 
     public float getVelocityX() {
-        return velocityX;
+        return velocityX / HelloActivity.metrics.widthPixels;
     }
 
     public float getVelocityY() {
-        return velocityY;
+        return velocityY / HelloActivity.metrics.heightPixels;
     }
 
     public long getTimestamp() {

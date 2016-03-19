@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import braincode.mobile.ebox.activity.HelloActivity;
 import braincode.mobile.ebox.gesture.GestureEvent;
 import braincode.mobile.ebox.sockets.Movement;
 
@@ -27,11 +28,11 @@ public class MotionGestureEvent extends GestureEvent {
     }
 
     public float getX() {
-        return motionEvent.getX();
+        return motionEvent.getX() / HelloActivity.metrics.widthPixels;
     }
 
     public float getY() {
-        return motionEvent.getY();
+        return motionEvent.getY() / HelloActivity.metrics.heightPixels;
     }
 
     public long getTimestamp() {

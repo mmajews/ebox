@@ -14,104 +14,6 @@ body {
 body {
   background: #222;
   color: #eee;
-  cursor: none;
-}
-.container {
-  padding: 20px;
-}
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #222;
-  z-index: 1000;
-  animation: 1s all;
-}
-.overlay .logo {
-  display: block;
-  width: 246px;
-  height: 300px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-top: -115px;
-  margin-left: -123px;
-  background: transparent url('../imgs/ebox_logo.png') 0 0 no-repeat;
-}
-.home {
-  padding: 100px;
-}
-.home .card {
-  width: 300px;
-  height: 200px;
-  float: left;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  background: #0b97c4;
-  position: relative;
-  transform: scale(1);
-  transition: .4s all;
-}
-.home .card:hover {
-  transform: scale(1.1);
-  background: red;
-}
-.home .card h2 {
-  font-weight: bold;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-}
-.toolbar {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  width: 100px;
-  background: #111 url(../ebox_logo_small.png) center center no-repeat;
-}
-.connectbar {
-  position: fixed;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 250px;
-  text-align: center;
-  background: #eee;
-  padding: 30px 0;
-  color: #000;
-}
-.connectbar h3 {
-  margin-bottom: 50px;
-}
-#cursor {
-  display: block;
-  width: 30px;
-  height: 50px;
-  background: transparent url(../imgs/cursor.png);
-  position: absolute;
-  top: 50px;
-  left: 200px;
-  z-index: 999;
-}
-* {
-  padding: 0;
-  margin: 0;
-  border: 0;
-  font: 20px/1 Dosis;
-}
-html,
-body {
-  min-height: 100%;
-  height: 100%;
-  overflow: hidden;
-  width: 100%;
-}
-body {
-  background: #222;
-  color: #eee;
 }
 .container {
   padding: 20px;
@@ -183,6 +85,7 @@ body {
   width: 100%;
   /*margin: 20px auto;*/
 }
+
 /* Window */
 .window {
   height: 95vh;
@@ -191,6 +94,7 @@ body {
   overflow: hidden;
   margin-bottom: 10px;
 }
+
 /* Score */
 .score {
   position: absolute;
@@ -204,6 +108,7 @@ body {
   text-shadow: 2px 2px 0 #000;
   z-index: 4;
 }
+
 /* Bird */
 .bird {
   height: 28px;
@@ -216,14 +121,12 @@ body {
   animation: birdFlap 0.2s steps(3, end) infinite alternate;
   transition: transform 0.3s;
 }
+
 @keyframes birdFlap {
-  0% {
-    background-position: 0 84px;
-  }
-  100% {
-    background-position: 0 0;
-  }
+  0% {background-position: 0 84px;}
+  100% {background-position: 0 0;}
 }
+
 /* Pipes */
 .pipe {
   width: 60px;
@@ -232,15 +135,18 @@ body {
   right: -60px;
   z-index: 2;
 }
+
 .pipe.hidden {
   display: none;
 }
+
 .pipe .topHalf {
   background: url('http://s21.postimg.org/kyr2rnpzr/pipe.png') bottom;
   position: absolute;
   top: 0;
   width: 100%;
 }
+
 .pipe .bottomHalf {
   background: url('http://s21.postimg.org/kyr2rnpzr/pipe.png') top;
   position: absolute;

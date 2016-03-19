@@ -123,7 +123,7 @@ ebox.directive('flappyBird', function(SocketService) {
                         var pipeBottom = $('.pipe:nth-of-type(4) .bottomHalf');
                         if((bird.offset().left + bird.width()) >= curPipe.offset().left && bird.offset().left <= (curPipe.offset().left + curPipe.width())){
                             if(bird.offset().top < (curPipe.offset().top + pipeTop.height()) || (bird.offset().top + bird.height()) > ((curPipe.offset().top + pipeTop.height()) +   gapHeight)){
-                                gameEnd();
+                                //gameEnd();
                             }
                         } else if(bird.offset().left >= (curPipe.offset().left + curPipe.width())){
                             $('.score').text(curPipe.attr('pipe-id'));

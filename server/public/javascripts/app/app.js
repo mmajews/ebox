@@ -50,6 +50,10 @@ ebox.config(function ($stateProvider, $urlRouterProvider) {
             url: '/flappy_bird',
             templateUrl: 'javascripts/app/flappy_bird/game.html'
         })
+        .state('gta', {
+            url: '/gta',
+            templateUrl: 'javascripts/app/gta/game.html'
+        })
 });
 
 ebox.run(function ($document, $rootScope, $state, SocketService) {

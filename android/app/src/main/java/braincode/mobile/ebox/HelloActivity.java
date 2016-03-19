@@ -21,7 +21,7 @@ import java.net.URI;
 
 public class HelloActivity extends Activity {
 
-    public static final String HTTP_SERVER = "http://10.22.100.84:1234";
+    public static final String HTTP_SERVER = "http://localhost:80";
     private EditText messageText;
     private Socket socket;
     private ArrayAdapter<String> adapter;

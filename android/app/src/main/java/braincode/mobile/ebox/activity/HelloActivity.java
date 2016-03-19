@@ -9,17 +9,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-
-import java.net.URI;
-
+import android.widget.TextView;
 import braincode.mobile.ebox.R;
 import braincode.mobile.ebox.gesture.GestureListener;
 import braincode.mobile.ebox.sockets.SocketController;
 
+import java.net.URI;
+
 
 public class HelloActivity extends Activity {
 
-    public static final String HTTP_SERVER = "http://10.22.102.197:3000";
+    public static String HTTP_SERVER = "http://10.22.102.197:3000";
 
     private GestureDetector gestureDetector;
 
@@ -28,6 +28,8 @@ public class HelloActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        HTTP_SERVER = (String) ((TextView) findViewById(R.id.ipAdressTextField)).getText();
+        Log.d("ebox", "will connect to: " + HTTP_SERVER);
         setContentView(R.layout.activity_hello);
 
         // socket.io

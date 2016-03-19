@@ -17,8 +17,8 @@ ebox.factory('SocketService', function($rootScope) {
             });
         },
 
-        emit: function(eventName, data, callback) {
-            console.log('emit');
+        emit: function(eventName, data) {
+            console.log(data);
             socket.emit(eventName, data);
         }
     }

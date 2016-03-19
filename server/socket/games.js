@@ -10,7 +10,10 @@ var games = function (socket, gameClient) {
         try {
             controllerData = JSON.parse(controllerData);
         } catch(err) {}
-        io.sockets.connected[gameClient.id].emit(controllerData.name, controllerData);
+        if(io.sockets.connected[gameClient.id]){
+            io.sockets.connected[gameClient.id].emit(controllerData.name, controllerData);
+        }
+
     });
 };
 

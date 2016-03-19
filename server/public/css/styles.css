@@ -64,7 +64,7 @@ body {
 .home .card.pong {
   background: transparent url(../imgs/pong.jpg) center center no-repeat;
 }
-.home .card:hover {
+.home .card.hovered {
   transform: scale(1.1);
 }
 .home .card h2 {

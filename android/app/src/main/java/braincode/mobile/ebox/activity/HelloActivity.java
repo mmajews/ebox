@@ -81,6 +81,7 @@ public class HelloActivity extends Activity {
                         VelocityTrackerCompat.getYVelocity(mVelocityTracker, pointerId));
                 break;
             case MotionEvent.ACTION_UP:
+                break;
             case MotionEvent.ACTION_CANCEL:
                 // Return a VelocityTracker object back to be re-used by others.
                 mVelocityTracker.recycle();

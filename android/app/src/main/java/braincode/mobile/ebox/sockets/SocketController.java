@@ -62,6 +62,6 @@ public class SocketController {
 
     public void emit(String name, Object data) {
         Log.d(name, "TIMESTAMP:" + new Date().getTime() + ", data: " + data);
-        socket.emit("padEvent", data);
+        socket.emit(name, data);
     }
 }

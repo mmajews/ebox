@@ -118,6 +118,6 @@ public class HelloActivity extends Activity {
     @Override
     public void onBackPressed() {
         socketController.emit("back", "");
-        super.onBackPressed();
+//        super.onBackPressed();
     }
 }

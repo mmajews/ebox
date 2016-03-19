@@ -20,6 +20,10 @@ ebox.config(function ($stateProvider, $urlRouterProvider) {
         url: '/pong',
         templateUrl: 'javascripts/app/pong/game.html'
     })
+    .state('flappyBird', {
+        url: '/flappy_bird',
+        templateUrl: 'javascripts/app/flappy_bird/game.html'
+    })
 });
 
 ebox.run(function ($document, $rootScope, $state) {

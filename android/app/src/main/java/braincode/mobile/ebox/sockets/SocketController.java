@@ -1,12 +1,9 @@
-package sockets;
-
-import android.net.Uri;
+package braincode.mobile.ebox.sockets;
 
 import io.socket.client.IO;
 import io.socket.client.Socket;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
 class SocketController {

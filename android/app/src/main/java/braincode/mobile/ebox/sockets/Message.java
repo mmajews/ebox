@@ -1,4 +1,4 @@
-package sockets;
+package braincode.mobile.ebox.sockets;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

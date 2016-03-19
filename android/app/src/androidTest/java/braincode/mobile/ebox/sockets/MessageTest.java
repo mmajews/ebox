@@ -1,4 +1,4 @@
-package sockets;
+package braincode.mobile.ebox.sockets;
 
 import org.joda.time.LocalDateTime;
 import org.junit.Test;

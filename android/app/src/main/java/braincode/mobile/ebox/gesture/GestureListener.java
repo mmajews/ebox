@@ -2,7 +2,7 @@ package braincode.mobile.ebox.gesture;
 
 import android.util.Log;
 import android.view.MotionEvent;
-import sockets.Movement;
+import braincode.mobile.ebox.sockets.Movement;
 
 import static android.view.GestureDetector.OnDoubleTapListener;
 import static android.view.GestureDetector.OnGestureListener;

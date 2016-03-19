@@ -8,4 +8,48 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activity.HelloActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/footer"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false">
+
+            <ListView
+                android:id="@+id/messageListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/footer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="false"
+            android:layout_gravity="center_horizontal|bottom"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/messageText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="70" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:text="@string/send" />
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

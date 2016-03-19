@@ -1,4 +1,4 @@
-package sockets;
+package braincode.mobile.ebox.sockets;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

@@ -12,11 +12,9 @@ var app = express();
 var server = require('http').Server(app);
 app.io = require('socket.io')(server);
 
-app.io.on('connection', function (socket) {
-    console.log('a user connected');
-    var menu = require('./socket/menu')(socket);
-    var games = require('./socket/games')(socket);
-});
+require('./utils/io').setIO(app.io);
+
+app.io.on('connection', require('./socket/config'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

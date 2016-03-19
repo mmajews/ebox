@@ -1,11 +1,14 @@
 /**
  * Created by konradmarzec on 18.03.2016.
  */
-var games = function(socket) {
-    socket.on('move', function() {
-        console.log('move');
-        socket.broadcast.emit('move')
-    })
+var io = require('./../utils/io').io();
+
+var games = function (socket, gameClient) {
+    socket.on('padEvent', function (controllerData) {
+        console.log('games/up');
+        io.sockets.connected[gameClient.id].emit(controllerData.movement, controllerData);
+        console.log('oddalem');
+    });
 };
 
-module .exports = games;
+module.exports = games;

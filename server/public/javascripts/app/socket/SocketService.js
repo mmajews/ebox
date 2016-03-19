@@ -3,15 +3,23 @@
  */
 'use strict';
 
-ebox.factory('SocketService', function() {
-    var socket = io.connect();
-    return {
-        up: function(eventName, callback) {
+ebox.factory('SocketService', function($rootScope) {
+    var socket = io.connect('', { query: 'type=gameClient' });
 
+    return {
+        on: function(eventName, callback) {
+            socket.on(eventName, function () {
+                console.log('powrót');
+                var args = arguments;
+                $rootScope.$apply(function () {
+                    callback.apply(socket, args);
+                });
+            });
         },
 
-        down: function(eventName, callback) {
-
+        emit: function(eventName, data, callback) {
+            console.log('emit');
+            socket.emit(eventName, data);
         }
     }
 });

@@ -4,9 +4,16 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum Movement {
-    OnSingleTapConfirmed("onSingleTapConfirmed"), OnDoubleTap("onDoubleTap"),
-    OnDoubleTapEvent("onDoubleTapEvent"), OnDown("onDown"), OnShowPress("onShowPress"),
-    OnSingleTapUp("onSIngleTapUp"), OnScroll("onScroll"), OnLongPress("onLongPress"), OnFling("onFling");
+    OnSingleTapConfirmed("onSingleTapConfirmed"),
+    OnDoubleTap("onDoubleTap"),
+    OnDoubleTapEvent("onDoubleTapEvent"),
+    OnDown("onDown"),
+    OnShowPress("onShowPress"),
+    OnSingleTapUp("onSingleTapUp"),
+    OnScroll("onScroll"),
+    OnLongPress("onLongPress"),
+    OnFling("onFling");
+
     private String description;
 
     Movement(String description) {

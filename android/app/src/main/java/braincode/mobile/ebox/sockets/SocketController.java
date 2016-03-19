@@ -6,7 +6,7 @@ import io.socket.client.Socket;
 import java.net.URI;
 import java.util.List;
 
-class SocketController {
+public class SocketController {
     private Socket socket;
 
     public SocketController(URI uri) {
@@ -17,7 +17,11 @@ class SocketController {
         socket.connect();
     }
 
-    public void performMovement(Movement movement, List<String> arguments) {
-        socket.emit(movement.toString(), arguments.toArray());
+    public void performMovement(String event, List<String> arguments) {
+        socket.emit(event, arguments.toArray());
+    }
+
+    public void disconnect() {
+        socket.disconnect();
     }
 }

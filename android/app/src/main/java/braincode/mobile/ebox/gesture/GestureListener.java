@@ -2,7 +2,15 @@ package braincode.mobile.ebox.gesture;
 
 import android.util.Log;
 import android.view.MotionEvent;
+import braincode.mobile.ebox.sockets.Message;
 import braincode.mobile.ebox.sockets.Movement;
+import braincode.mobile.ebox.sockets.SocketController;
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import static android.view.GestureDetector.OnDoubleTapListener;
 import static android.view.GestureDetector.OnGestureListener;
@@ -10,10 +18,23 @@ import static android.view.GestureDetector.OnGestureListener;
 public class GestureListener implements OnGestureListener, OnDoubleTapListener {
 
     private static final String TAG = "GestureListener";
+    private SocketController socketController;
+
+    public GestureListener(String httpServer) {
+        socketController = new SocketController(URI.create(httpServer));
+    }
+
 
     @Override
     public boolean onSingleTapConfirmed(MotionEvent e) {
         Log.d(TAG, Movement.OnSingleTapConfirmed.getEventText());
+        List<String> list = new ArrayList<>(1);
+        try {
+            list.add((new Message(Movement.OnSingleTapConfirmed, e.getX(), e.getY(), new Date()).toJson()));
+        } catch (JsonProcessingException e1) {
+            e1.printStackTrace();
+        }
+        socketController.performMovement("padEvent", list);
         return false;
     }
 

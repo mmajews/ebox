@@ -11,11 +11,10 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
-
-import java.net.URI;
-
 import braincode.mobile.ebox.R;
 import braincode.mobile.ebox.gesture.GestureListener;
+
+import java.net.URI;
 
 
 public class HelloActivity extends Activity {
@@ -34,7 +33,7 @@ public class HelloActivity extends Activity {
         // socket.io
         URI uri = URI.create(HTTP_SERVER);
 
-        gestureListener = new GestureListener();
+        gestureListener = new GestureListener(HTTP_SERVER);
 
         gestureDetector = new GestureDetector(this, gestureListener);
         gestureDetector.setOnDoubleTapListener(gestureListener);

@@ -16,10 +16,27 @@ ebox.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'GameController',
         templateUrl: 'javascripts/app/game/game.html'
     })
+    .state('pong', {
+        url: '/pong',
+        templateUrl: 'javascripts/app/pong/game.html'
+    })
 });
 
-ebox.run(function () {
+ebox.run(function ($document, $rootScope, $state) {
     setTimeout(function () {
         $('.overlay').fadeOut();
     }, 1000);
+
+    $document.bind('keydown', function (e) {
+        console.log(e);
+    });
+
+    $document.bind('mousemove', function (e) {
+        var x = e.pageX, y = e.pageY;
+        $('#cursor').offset({left: x+1, top: y+1});
+    });
+
+    $rootScope.goTo = function (state) {
+        $state.go(state);
+    };
 });

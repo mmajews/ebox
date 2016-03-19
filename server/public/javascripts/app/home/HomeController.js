@@ -3,6 +3,6 @@
  */
 'use strict';
 
-ebox.controller('HomeController', function() {
+ebox.controller('HomeController', function($scope) {
 
 });

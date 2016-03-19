@@ -1,5 +1,6 @@
 package braincode.mobile.ebox.sockets;
 
+import android.app.Activity;
 import android.util.Log;
 import android.widget.TextView;
 import braincode.mobile.ebox.R;
@@ -17,12 +18,11 @@ public class SocketController {
     private static final int EVENT_GAP = 20;
 
     private Socket socket;
-    private Handler handler = new Handler();
     private TextView currentSendTextView;
 
     private long previous;
 
-    public SocketController(Activity activity,URI uri) {
+    public SocketController(Activity activity, URI uri) {
         this.socket = IO.socket(uri);
         currentSendTextView = (TextView) activity.findViewById(R.id.currentSendTextView);
 

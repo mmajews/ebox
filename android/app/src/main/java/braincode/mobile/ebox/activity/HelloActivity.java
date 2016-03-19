@@ -12,14 +12,13 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-
-import java.net.URI;
-
 import braincode.mobile.ebox.R;
 import braincode.mobile.ebox.gesture.GestureEvent;
 import braincode.mobile.ebox.gesture.GestureListener;
 import braincode.mobile.ebox.sensor.SensorHandler;
 import braincode.mobile.ebox.sockets.SocketController;
+
+import java.net.URI;
 
 
 public class HelloActivity extends Activity {
@@ -42,7 +41,7 @@ public class HelloActivity extends Activity {
 
         // socket.io
         URI uri = URI.create(HTTP_SERVER);
-        socketController = new SocketController(uri);
+        socketController = new SocketController(this, uri);
 
         GestureListener gestureListener = new GestureListener(socketController);
         gestureDetector = new GestureDetector(this, gestureListener);

@@ -2,15 +2,10 @@
  * Created by konradmarzec on 18.03.2016.
  */
 var menu = function(socket) {
-    socket.on('up', function() {
-        console.log('games/up');
-        socket.broadcast.emit('games/up');
-    });
-
-    socket.on('down', function() {
-        console.log('games/down');
-        socket.broadcast.emit('games/down');
-    });
+    socket.on('move', function() {
+        console.log('move');
+        socket.broadcast.emit('move')
+    })
 };
 
 module.exports = menu;

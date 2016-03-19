@@ -3,12 +3,13 @@
  */
 'use strict';
 
-ebox.factory('SocketService', function() {
-    var socket = io.connect();
+ebox.factory('SocketService', function($rootScope) {
+    var socket = io.connect('', { query: 'type=gameClient' });
 
     return {
         on: function(eventName, callback) {
             socket.on(eventName, function () {
+                console.log('powrót')
                 var args = arguments;
                 $rootScope.$apply(function () {
                     callback.apply(socket, args);
@@ -18,6 +19,7 @@ ebox.factory('SocketService', function() {
 
         emit: function(eventName, data, callback) {
             socket.emit(eventName, data, function () {
+                console.log('dupa');
                 var args = arguments;
                 $rootScope.$apply(function () {
                     if (callback) {

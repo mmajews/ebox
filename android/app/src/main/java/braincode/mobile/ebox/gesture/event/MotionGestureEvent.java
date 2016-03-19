@@ -40,7 +40,6 @@ public class MotionGestureEvent extends GestureEvent {
         return motionEvent.getEventTime();
     }
 
-    @JsonIgnore
     @Override
     public String getName() {
         return movement.getEventText();

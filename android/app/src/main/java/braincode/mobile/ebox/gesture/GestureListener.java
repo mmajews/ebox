@@ -24,7 +24,7 @@ public class GestureListener implements OnGestureListener, OnDoubleTapListener {
     @Override
     public boolean onSingleTapConfirmed(MotionEvent e) {
         //Log.d(TAG, Movement.OnSingleTapConfirmed.getEventText());
-//        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnSingleTapConfirmed, e));
+        socketController.onGestureEvent(new MotionGestureEvent(Movement.OnSingleTapConfirmed, e));
         return false;
     }
 

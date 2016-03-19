@@ -6,19 +6,26 @@ package braincode.mobile.ebox.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+
+import java.net.URI;
+
 import braincode.mobile.ebox.R;
 import braincode.mobile.ebox.gesture.GestureEvent;
 import braincode.mobile.ebox.gesture.GestureListener;
 import braincode.mobile.ebox.sensor.SensorHandler;
 import braincode.mobile.ebox.sockets.SocketController;
-
-import java.net.URI;
 
 
 public class HelloActivity extends Activity {
@@ -29,12 +36,24 @@ public class HelloActivity extends Activity {
     private SocketController socketController;
     private SensorHandler sensorHandler;
 
+    private SurfaceHolder holder;
+    private Paint paint;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         HTTP_SERVER = "http://" + getIntent().getExtras().get("IP").toString();
         Log.d("ebox", "will connect to: " + HTTP_SERVER);
         setContentView(R.layout.activity_hello);
+
+        SurfaceView surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
+        holder = surfaceView.getHolder();
+        holder.setFormat(PixelFormat.TRANSPARENT);
+
+        paint = new Paint();
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setColor(Color.WHITE);
+        paint.setStrokeWidth(3);
 
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -94,5 +113,11 @@ public class HelloActivity extends Activity {
         }
 
         return super.onTouchEvent(event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        socketController.emit("back", "");
+        super.onBackPressed();
     }
 }

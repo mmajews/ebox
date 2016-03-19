@@ -2,10 +2,12 @@ package braincode.mobile.ebox.gesture;
 
 import android.util.Log;
 import android.view.MotionEvent;
+
 import braincode.mobile.ebox.sockets.Message;
 import braincode.mobile.ebox.sockets.Movement;
 import braincode.mobile.ebox.sockets.ScrollMessage;
 import braincode.mobile.ebox.sockets.SocketController;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.net.URI;
@@ -21,8 +23,8 @@ public class GestureListener implements OnGestureListener, OnDoubleTapListener {
     private static final String TAG = "GestureListener";
     private SocketController socketController;
 
-    public GestureListener(String httpServer) {
-        socketController = new SocketController(URI.create(httpServer));
+    public GestureListener(SocketController socketController) {
+        this.socketController = socketController;
     }
 
     private void sendEvent(List list) {
@@ -94,7 +96,6 @@ public class GestureListener implements OnGestureListener, OnDoubleTapListener {
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
         Log.d(TAG, Movement.OnScroll.getEventText());
-        ;
         sendEvent(createScrollMessage(Movement.OnScroll, e1, e1, distanceX, distanceY));
         return false;
     }

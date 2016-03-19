@@ -14,18 +14,20 @@ import android.view.VelocityTracker;
 
 import braincode.mobile.ebox.R;
 import braincode.mobile.ebox.gesture.GestureListener;
+import braincode.mobile.ebox.sockets.SocketController;
 
 import java.net.URI;
 
 
 public class HelloActivity extends Activity {
 
-    public static final String HTTP_SERVER = "http://localhost:80";
+    public static final String HTTP_SERVER = "http://10.22.104.69:3000";
 
     private GestureDetector gestureDetector;
     private GestureListener gestureListener;
 
     private VelocityTracker mVelocityTracker;
+    private SocketController socketController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +35,9 @@ public class HelloActivity extends Activity {
         setContentView(R.layout.activity_hello);
         // socket.io
         URI uri = URI.create(HTTP_SERVER);
+        socketController = new SocketController(uri);
 
-        gestureListener = new GestureListener(HTTP_SERVER);
+        gestureListener = new GestureListener(socketController);
 
         gestureDetector = new GestureDetector(this, gestureListener);
         gestureDetector.setOnDoubleTapListener(gestureListener);
@@ -48,4 +51,15 @@ public class HelloActivity extends Activity {
         return super.onTouchEvent(event);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        socketController.connect();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        socketController.disconnect();
+    }
 }

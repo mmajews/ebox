@@ -2,17 +2,16 @@ package braincode.mobile.ebox.sockets;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.joda.time.LocalDateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+
+import java.util.Date;
 
 class Message {
     private Movement movement;
     private double x;
     private double y;
-    private LocalDateTime timeStamp;
+    private Date timeStamp;
 
-    Message(Movement movement, double x, double y, LocalDateTime timeStamp) {
+    Message(Movement movement, double x, double y, Date timeStamp) {
         this.movement = movement;
         this.x = x;
         this.y = y;
@@ -36,8 +35,7 @@ class Message {
     }
 
     public String getTimeStamp() {
-        DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
-        return fmt.print(timeStamp);
+        return String.valueOf(timeStamp.getTime());
     }
 }
 

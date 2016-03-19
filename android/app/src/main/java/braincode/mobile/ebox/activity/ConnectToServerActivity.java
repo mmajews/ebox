@@ -68,6 +68,7 @@ public class ConnectToServerActivity extends Activity {
 
     public void connect(View v) {
         Intent intent = new Intent(this, HelloActivity.class);
+        intent.putExtra("IP", ipAddressTextField.getText());
         startActivity(intent);
     }
 }

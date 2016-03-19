@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.widget.TextView;
 import braincode.mobile.ebox.R;
 import braincode.mobile.ebox.gesture.GestureListener;
 import braincode.mobile.ebox.sockets.SocketController;
@@ -28,7 +27,7 @@ public class HelloActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HTTP_SERVER = (String) ((TextView) findViewById(R.id.ipAdressTextField)).getText();
+        HTTP_SERVER = getIntent().getExtras().getString("IP");
         Log.d("ebox", "will connect to: " + HTTP_SERVER);
         setContentView(R.layout.activity_hello);
 

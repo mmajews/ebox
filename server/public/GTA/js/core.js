@@ -53,7 +53,7 @@ window.BlobBuilder = window.WebKitBlobBuilder || window.MozBlobBuilder;
 window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
 
 GTA.Game = function (element, socket) {
-    
+    window.mySocket = socket;
     document.addEventListener( 'mousemove', onDocumentMouseMove, false );
     this.scene = new THREE.Scene();
     
@@ -69,7 +69,7 @@ GTA.Game = function (element, socket) {
         this.filesystem = new GTA.FileSystem( this );
     } else {
         this.filesystem = null;
-        GTA.loader.call(this, socket);
+        GTA.loader.call(this);
     }
     
    

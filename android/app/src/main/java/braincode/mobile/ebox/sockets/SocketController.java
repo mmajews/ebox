@@ -29,7 +29,7 @@ public class SocketController {
         return opts;
     }
 
-    public void onGestureEvent(Movement movement, List<String> arguments) {
-//        socket.emit(movement.toString(), arguments.toArray());
+    public void onGestureEvent(String event, List<String> arguments) {
+        socket.emit(event, arguments.toArray());
     }
 }

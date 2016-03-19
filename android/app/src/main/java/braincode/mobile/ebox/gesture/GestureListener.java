@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import braincode.mobile.ebox.sockets.Message;
 import braincode.mobile.ebox.sockets.Movement;
+import braincode.mobile.ebox.sockets.ScrollMessage;
 import braincode.mobile.ebox.sockets.SocketController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -25,7 +26,7 @@ public class GestureListener implements OnGestureListener, OnDoubleTapListener {
     }
 
     private void sendEvent(List list) {
-        socketController.performMovement("padEvent", list);
+        socketController.onGestureEvent("padEvent", list);
     }
 
     private List<String> createMessage(Movement movement, MotionEvent motionEvent) {

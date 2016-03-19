@@ -35,7 +35,7 @@ ebox.directive('flappyBird', function(SocketService) {
                     }
                 });
 
-                SocketService.on('onSingleTapConfirmed', function(data) {
+                SocketService.on('touchUp', function(data) {
                     birdFlap();
                     if(gameState === 2){
                         gameState = 1;

@@ -28,7 +28,11 @@ ebox.run(function ($document, $rootScope, $state) {
     }, 1000);
 
     $document.bind('keydown', function (e) {
-        console.log(e);
+        if(e.which == 37){
+            $rootScope.emit('keydown:left');
+        } else if(e.which == 39){
+            $rootScope.emit('keydown:right');
+        }
     });
 
     $document.bind('mousemove', function (e) {

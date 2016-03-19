@@ -2,7 +2,7 @@ ebox.directive('pongGame', function () {
     return {
         restrict: 'E',
         templateUrl: 'javascripts/app/pong/pong.html',
-        controller: function () {
+        controller: function ($rootScope) {
             // RequestAnimFrame: a browser API for getting smooth animations
             window.requestAnimFrame = (function(){
                 return  window.requestAnimationFrame       ||
@@ -28,8 +28,8 @@ ebox.directive('pongGame', function () {
 // Initialize canvas and required variables
             var canvas = document.getElementById("pongGame"),
                 ctx = canvas.getContext("2d"), // Create canvas context
-                W = window.innerWidth, // Window's width
-                H = window.innerHeight, // Window's height
+                W = window.innerWidth - 40, // Window's width
+                H = window.innerHeight - 40, // Window's height
                 particles = [], // Array containing particles
                 ball = {}, // Ball object
                 paddles = [2], // Array containing two paddles
@@ -39,12 +39,13 @@ ebox.directive('pongGame', function () {
                 particlesCount = 20, // Number of sparks when ball strikes the paddle
                 flag = 0, // Flag variable which is changed on collision
                 particlePos = {}, // Object to contain the position of collision
-                multipler = 1, // Varialbe to control the direction of sparks
+                multiplier = 1, // Varialbe to control the direction of sparks
                 startBtn = {}, // Start button object
                 restartBtn = {}, // Restart button object
                 over = 0, // flag varialbe, cahnged when the game is over
                 init, // variable to initialize animation
-                paddleHit;
+                paddleHit,
+                collision = false;
 
 // Add mousemove and mousedown events to the canvas
             canvas.addEventListener("mousemove", trackPosition, true);
@@ -118,7 +119,7 @@ ebox.directive('pongGame', function () {
                 }
             };
 
-            var p, p1;
+            var p, p1, p2, par;
 
 // Restart Button object
             restartBtn = {

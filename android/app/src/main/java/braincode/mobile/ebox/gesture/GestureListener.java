@@ -34,7 +34,7 @@ public class GestureListener implements OnGestureListener, OnDoubleTapListener {
         } catch (JsonProcessingException e1) {
             e1.printStackTrace();
         }
-        socketController.performMovement("padEvent", list);
+//        socketController.performMovement("padEvent", list);
         return false;
     }
 

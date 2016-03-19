@@ -3,15 +3,17 @@ package braincode.mobile.ebox.sockets;
 import android.app.Activity;
 import android.util.Log;
 import android.widget.TextView;
-import braincode.mobile.ebox.R;
-import braincode.mobile.ebox.gesture.GestureEvent;
-import io.socket.client.IO;
-import io.socket.client.Socket;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URI;
 import java.util.Date;
+
+import braincode.mobile.ebox.R;
+import braincode.mobile.ebox.gesture.GestureEvent;
+import io.socket.client.IO;
+import io.socket.client.Socket;
 
 public class SocketController {
 
@@ -39,6 +41,7 @@ public class SocketController {
     public void onGestureEvent(final GestureEvent gestureEvent) {
         long timestamp = new Date().getTime();
         if (timestamp - previous > EVENT_GAP) {
+            emit(gestureEvent);
             Object data = gestureEvent.getData();
             Log.d("padEvent", "TIMESTAMP:" + new Date().getTime() + ", data: " + data);
             try {
@@ -50,5 +53,15 @@ public class SocketController {
             socket.emit("padEvent", data);
             previous = timestamp;
         }
+
+        if (gestureEvent.getName().equals("touchDown") || gestureEvent.getName().equals("touchUp")) {
+            emit(gestureEvent);
+        }
+    }
+
+    private void emit(GestureEvent gestureEvent) {
+        Object data = gestureEvent.getData();
+        Log.d("padEvent", "TIMESTAMP:" + new Date().getTime() + ", data: " + data);
+        socket.emit("padEvent", data);
     }
 }

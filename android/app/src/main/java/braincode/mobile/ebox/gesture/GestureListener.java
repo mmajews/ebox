@@ -1,65 +1,67 @@
 package braincode.mobile.ebox.gesture;
 
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
+import sockets.Movement;
 
-import static android.view.GestureDetector.*;
+import static android.view.GestureDetector.OnDoubleTapListener;
+import static android.view.GestureDetector.OnGestureListener;
 
 public class GestureListener implements OnGestureListener, OnDoubleTapListener {
 
-    public static final String TAG = "GestureListener";
+    private static final String TAG = "GestureListener";
 
     @Override
     public boolean onSingleTapConfirmed(MotionEvent e) {
-        Log.d(TAG, "onSingleTapConfirmed");
+        Log.d(TAG, Movement.OnSingleTapConfirmed.getEventText());
         return false;
     }
 
     @Override
     public boolean onDoubleTap(MotionEvent e) {
-        Log.d(TAG, "onDoubleTap");
+        Log.d(TAG, Movement.OnDoubleTap.getEventText());
         return false;
     }
 
     @Override
     public boolean onDoubleTapEvent(MotionEvent e) {
-        Log.d(TAG, "onDoubleTapEvent");
+        Log.d(TAG, Movement.OnDoubleTapEvent.getEventText());
         return false;
     }
 
     @Override
     public boolean onDown(MotionEvent e) {
-        Log.d(TAG, "onDown");
+        Log.d(TAG, Movement.OnDown.getEventText());
         return false;
     }
 
     @Override
     public void onShowPress(MotionEvent e) {
-        Log.d(TAG, "onShowPress");
+        Log.d(TAG, Movement.OnShowPress.getEventText());
 
     }
 
     @Override
     public boolean onSingleTapUp(MotionEvent e) {
-        Log.d(TAG, "onSingleTapUp");
+        Log.d(TAG, Movement.OnSingleTapUp.getEventText());
         return false;
     }
 
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        Log.d(TAG, "onScroll");
+        Log.d(TAG, Movement.OnScroll.getEventText());
         return false;
     }
 
     @Override
     public void onLongPress(MotionEvent e) {
-        Log.d(TAG, "onLongPress");
+        Log.d(TAG, Movement.OnLongPress.getEventText());
+
     }
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        Log.d(TAG, "onFling");
+        Log.d(TAG, Movement.OnFling.getEventText());
         return false;
     }
 }

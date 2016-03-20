@@ -23,7 +23,7 @@ public class SensorHandler implements SensorEventListener {
         Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         if (sensor != null) {
             Log.e("SensorHandler", "Sensor registered");
-            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_UI);
+            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
         } else {
             Log.e("SensorHandler", "There is no orientation sensor on device!");
         }

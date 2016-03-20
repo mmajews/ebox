@@ -41,7 +41,7 @@ public class SocketController {
     public void onGestureEvent(final GestureEvent gestureEvent) {
         long timestamp = new Date().getTime();
         if (timestamp - previous > EVENT_GAP) {
-            emit(gestureEvent);
+            emit("padEvent", gestureEvent.getData());
             Object data = gestureEvent.getData();
             Log.d("padEvent", "TIMESTAMP:" + new Date().getTime() + ", data: " + data);
             try {
@@ -54,14 +54,14 @@ public class SocketController {
             previous = timestamp;
         }
 
-        if (gestureEvent.getName().equals("touchDown") || gestureEvent.getName().equals("touchUp")) {
-            emit(gestureEvent);
+        if (gestureEvent.getName().equals("touchDown") || gestureEvent.getName().equals("touchUp")
+                || gestureEvent.getName().equals(Movement.OnSingleTapConfirmed.getEventText())) {
+            emit("padEvent", gestureEvent.getData());
         }
     }
 
-    private void emit(GestureEvent gestureEvent) {
-        Object data = gestureEvent.getData();
-        Log.d("padEvent", "TIMESTAMP:" + new Date().getTime() + ", data: " + data);
-        socket.emit("padEvent", data);
+    public void emit(String name, Object data) {
+        Log.d(name, "TIMESTAMP:" + new Date().getTime() + ", data: " + data);
+        socket.emit(name, data);
     }
 }

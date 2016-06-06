@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+html,
+body {
+  min-height: 100%;
+  height: 100%;
+  background: #222 url(../images/header_pattern.png);
+  font: 16px/1.5 'PT Sans', sans-serif;
+}
+p {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.pull-right {
+  float: right;
+  margin: 30px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #222 url(../images/header_pattern.png);
+}
+.overlay .logo {
+  position: absolute;
+  width: 246px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  margin-left: -123px;
+  margin-top: -150px;
+  background: transparent url('../images/ebox_logo.png') center center no-repeat;
+}
+header {
+  height: 500px;
+  padding: 80px 0 200px 0;
+  background: transparent url(../images/ebox_macbook.png) bottom center no-repeat;
+  background-position: center 270px;
+}
+header h1 {
+  text-align: center;
+  height: 60px;
+  background: transparent url(../images/header_logo.png) center center no-repeat;
+}
+header h1 span {
+  display: none;
+}
+.main-content {
+  background: #fff;
+  padding: 100px 0;
+}
+.main-content .content {
+  width: 900px;
+  margin: 0 auto;
+}
+.footer {
+  width: 900px;
+  margin: 0 auto;
+  padding-top: 30px;
+  text-align: center;
+  margin-top: 100px;
+  border-top: 1px solid #ccc;
+  color: #aaa;
+  font-size: .8em;
+}

@@ -1,6 +1,8 @@
 /.idea
 *.class
 
+.DS_Store
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -39,6 +41,7 @@ build/Release
 
 # Dependency directories
 server/node_modules
+website/node_modules
 .idea
 jspm_packages
 
